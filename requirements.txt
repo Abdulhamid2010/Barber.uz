@@ -1,0 +1,18 @@
+# Local ishga tushirish uchun kerak bo'ladigan asosiy paketlar:
+Django>=6.1,<6.2
+Pillow>=11.0
+dj-database-url>=3.1
+python-dotenv>=1.2
+whitenoise>=6.9
+requests>=2.32
+
+# ===== Quyidagilar hozircha kerak emas, faqat kelajakda kerak bo'lsa o'rnatiladi =====
+# PostgreSQL ishlatmoqchi bo'lsangiz (hozir SQLite ishlatiladi, bu shart emas):
+# psycopg[binary]>=3.2
+#
+# Rasm/videolarni S3-compatible storage'da saqlamoqchi bo'lsangiz (.env dagi USE_S3=True):
+# django-storages[s3]>=1.14
+# boto3>=1.40
+#
+# Haqiqiy saytga (production serverga) chiqarganda kerak bo'ladigan WSGI server:
+# gunicorn>=23.0
