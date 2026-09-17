@@ -1,0 +1,2 @@
+{% extends "base.html" %}{% block title %}Profilni sozlash — BARBER.UZ{% endblock %}{% block content %}
+<section class="formpage"><div class="formintro"><span class="eyebrow">BARBER PROFILE</span><h1>Profilingizni sozlang.</h1><p>Mijozlar sizni topishi uchun ma'lumotlaringizni to'ldiring.</p></div><form method="post" enctype="multipart/form-data" class="proform">{% csrf_token %}{{form.as_p}}<button class="goldbtn wide">Saqlash →</button></form></section>{% endblock %}

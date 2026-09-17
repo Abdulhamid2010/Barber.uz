@@ -1,0 +1,2 @@
+{% extends "base.html" %}{% block title %}Video qo‘shish — BARBER.UZ{% endblock %}{% block content %}
+<section class="formpage"><div class="formintro"><span class="eyebrow">PORTFOLIO</span><h1>Portfolio video qo‘shing.</h1><p>Ishlaringizni ko‘rsatib, ko‘proq mijoz jalb qiling.</p></div><form method="post" enctype="multipart/form-data" class="proform">{% csrf_token %}{{form.as_p}}<button class="goldbtn wide">Video qo‘shish →</button></form></section>{% endblock %}
