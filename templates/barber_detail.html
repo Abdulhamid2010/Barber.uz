@@ -1,0 +1,18 @@
+{% extends "base.html" %}{% block title %}{{barber.user.get_full_name}} — BARBER.UZ{% endblock %}{% block content %}
+<section class="profilehero"><div class="profile-avatar">{% if barber.cover %}<img src="{{barber.cover.url}}">{% else %}<span>{{barber.user.first_name|first|default:"B"}}</span>{% endif %}</div><div><div class="eyebrow">PROFESSIONAL BARBER {% if barber.is_verified %}✓ VERIFIED{% endif %}</div><h1>{{barber.user.get_full_name|default:barber.user.username}}</h1><p class="lead">{{barber.bio|default:"Professional barber. Siz uchun sifatli va zamonaviy soch turmaklari."}}</p><div class="profile-meta">★ {{barber.rating}} <span>•</span> {{barber.experience}} yil tajriba <span>•</span> 📍 {{barber.city}}</div><div class="contactline">📍 {{barber.address}} &nbsp; • &nbsp; 📞 {{barber.phone}}</div></div><div class="hero-actions"><a class="goldbtn" href="/book/{{barber.id}}/">Vaqt bron qilish →</a>{% if user.is_authenticated %}<a class="heart" href="/favorite/{{barber.id}}/">♡ Saqlash</a>{% endif %}</div></section>
+<section class="section detailgrid"><div><div class="section-head"><div><span class="eyebrow">PORTFOLIO</span><h2>So‘nggi ishlar</h2></div></div><div class="portfolio">{% for p in barber.portfolio.all %}<img src="{{p.image.url}}" alt="{{p.title}}">{% empty %}<div class="portfolio-empty">Portfolio rasmlari tez orada.</div>{% endfor %}</div></div><aside><div class="sidecard"><span class="eyebrow">SERVICES</span>{% for s in barber.services.all %}<div class="service"><div><strong>{{s.name}}</strong><small>{{s.duration}} min</small></div><b>{{s.price|floatformat:0}} so‘m</b></div>{% empty %}<p>Xizmatlar hali qo‘shilmagan.</p>{% endfor %}<a class="goldbtn wide" href="/book/{{barber.id}}/">Bron qilish</a></div><div class="sidecard"><span class="eyebrow">ISH VAQTI</span><h3>Har kuni</h3><p>{{barber.working_hours}}</p></div></aside></section><section class="section reviews"><span class="eyebrow">REVIEWS</span><h2>Mijozlar fikri</h2><div class="reviewgrid">{% for r in reviews %}<div class="sidecard"><b>★ {{r.rating}}/5</b><p>{{r.text|default:"Ajoyib xizmat!"}}</p><small>{{r.user.get_full_name|default:r.user.username}}</small></div>{% empty %}<div class="empty">Hali sharhlar yo‘q.</div>{% endfor %}</div></section>{% endblock %}
+{% if barber.videos.all %}
+<section class="container page">
+  <h2>Video portfolio</h2>
+  <div class="portfolio-grid">
+    {% for item in barber.videos.all %}
+      <article class="portfolio-card">
+        <video controls preload="metadata" style="width:100%;border-radius:16px">
+          <source src="{{ item.video.url }}">
+        </video>
+        {% if item.title %}<p>{{ item.title }}</p>{% endif %}
+      </article>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
