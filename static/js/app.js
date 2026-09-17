@@ -1,0 +1,1 @@
+setTimeout(()=>{const t=document.querySelector(".toast");if(t)t.classList.add("hide")},3500);document.querySelectorAll("input,select,textarea").forEach(x=>x.addEventListener("focus",()=>x.classList.add("focus")));
