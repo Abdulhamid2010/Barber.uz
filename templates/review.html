@@ -1,0 +1,1 @@
+{% extends "base.html" %}{% block content %}<section class="formpage"><div class="formintro"><span class="eyebrow">YOUR REVIEW</span><h1>Xizmatni baholang.</h1></div><form method="post" class="proform">{% csrf_token %}{{form.as_p}}<button class="goldbtn wide">Bahoni yuborish →</button></form></section>{% endblock %}
