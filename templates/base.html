@@ -1,0 +1,10 @@
+{% load static %}
+<!doctype html><html lang="uz"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{% block title %}BARBER.UZ{% endblock %}</title><link rel="stylesheet" href="{% static 'css/style.css' %}"></head>
+<body>
+<div class="noise"></div>
+<nav><a class="logo" href="/">BARBER<span>.UZ</span></a><div class="navlinks"><a href="/barbers/">Barberlar</a><a href="#how">Qanday ishlaydi</a>{% if user.is_authenticated %}<a href="/dashboard/">Kabinet</a><a href="/logout/">Chiqish</a>{% else %}<a href="/login/">Kirish</a><a class="navbtn" href="/register/">Ro‘yxatdan o‘tish</a>{% endif %}</div><button class="hamb" onclick="document.querySelector('.navlinks').classList.toggle('show')">☰</button></nav>
+{% if messages %}<div class="toast">{% for m in messages %}{{m}}{% endfor %}</div>{% endif %}
+{% block content %}{% endblock %}
+<footer><div class="logo">BARBER<span>.UZ</span></div><p>O‘zbekistondagi barberlarni topish va vaqt bron qilish platformasi.</p><div>© 2026 BARBER.UZ</div></footer>
+<script src="{% static 'js/app.js' %}"></script></body></html>
